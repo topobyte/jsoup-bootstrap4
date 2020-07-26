@@ -43,6 +43,7 @@ import de.topobyte.jsoup.bootstrap4.components.CollapsibleCard;
 import de.topobyte.jsoup.bootstrap4.components.Container;
 import de.topobyte.jsoup.bootstrap4.components.ContextualType;
 import de.topobyte.jsoup.bootstrap4.components.NavTabs;
+import de.topobyte.jsoup.bootstrap4.components.ResponsiveImage;
 import de.topobyte.jsoup.components.Div;
 import de.topobyte.jsoup.nodes.Element;
 
@@ -86,6 +87,8 @@ public class OverviewGenerator extends BaseGenerator
 		panels(div);
 
 		alerts(div);
+
+		div.ac(new ResponsiveImage("image.svg"));
 
 		Document doc = builder.getDocument();
 		System.out.println(doc);

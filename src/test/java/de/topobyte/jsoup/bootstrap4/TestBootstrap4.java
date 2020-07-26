@@ -22,6 +22,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.apache.commons.io.IOUtils;
+
+import de.topobyte.melon.resources.Resources;
+
 public class TestBootstrap4
 {
 
@@ -30,6 +34,9 @@ public class TestBootstrap4
 	public static void main(String[] args) throws IOException
 	{
 		Files.createDirectories(DIR);
+
+		IOUtils.copy(Resources.stream("image.svg"),
+				Files.newOutputStream(DIR.resolve("image.svg")));
 
 		OverviewGenerator overviewGenerator = new OverviewGenerator();
 		overviewGenerator.generate();
