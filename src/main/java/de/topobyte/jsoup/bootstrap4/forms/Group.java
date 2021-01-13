@@ -30,9 +30,9 @@ public class Group
 	@Getter
 	private Label label;
 	@Getter
-	private Element content;
+	private Element<?> content;
 
-	public Group(Div group, Label label, Element content)
+	public Group(Div group, Label label, Element<?> content)
 	{
 		this.group = group;
 		this.label = label;

@@ -26,6 +26,8 @@ import de.topobyte.jsoup.HTML;
 import de.topobyte.jsoup.HtmlBuilder;
 import de.topobyte.jsoup.bootstrap4.components.Menu;
 import de.topobyte.jsoup.bootstrap4.components.MenuBuilder;
+import de.topobyte.jsoup.components.Body;
+import de.topobyte.jsoup.components.Head;
 import de.topobyte.jsoup.nodes.Element;
 
 public class BaseGenerator
@@ -35,7 +37,7 @@ public class BaseGenerator
 
 	public void generate() throws IOException
 	{
-		Element head = builder.getHead();
+		Head head = builder.getHead();
 
 		String header = IOUtils
 				.toString(Thread.currentThread().getContextClassLoader()
@@ -43,14 +45,14 @@ public class BaseGenerator
 		System.out.println(header);
 		ElementUtil.appendFragment(head, header);
 
-		Element body = builder.getBody();
+		Body body = builder.getBody();
 
 		// Menu
 
 		menu(body);
 	}
 
-	protected static void menu(Element body)
+	protected static void menu(Body body)
 	{
 		MenuBuilder menuBuilder = new MenuBuilder();
 		Menu menu = menuBuilder.create();
@@ -58,9 +60,9 @@ public class BaseGenerator
 
 		menu.addBrand(HTML.span().appendText("Awesome"));
 
-		Element collapse = menu.addCollapsible();
-		Element main = menu.addSection(collapse);
-		Element right = menu.addSectionRight(collapse);
+		Element<?> collapse = menu.addCollapsible();
+		Element<?> main = menu.addSection(collapse);
+		Element<?> right = menu.addSectionRight(collapse);
 
 		menu.addLink(main, "index.html", "Overview", false);
 		menu.addLink(main, "forms.html", "Forms", false);

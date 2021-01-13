@@ -18,9 +18,9 @@
 package de.topobyte.jsoup.bootstrap4.components;
 
 import de.topobyte.jsoup.HTML;
+import de.topobyte.jsoup.components.A;
 import de.topobyte.jsoup.components.ListItem;
 import de.topobyte.jsoup.components.UnorderedList;
-import de.topobyte.jsoup.nodes.Element;
 
 public class NavTabs
 {
@@ -41,7 +41,7 @@ public class NavTabs
 	{
 		ListItem item = list.addItem();
 		item.addClass("nav-item");
-		Element a = item.ac(HTML.a(href).inner(text));
+		A a = item.ac(HTML.a(href).inner(text));
 		a.addClass("nav-link");
 		if (active) {
 			a.addClass("active");

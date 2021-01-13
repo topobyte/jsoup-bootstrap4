@@ -44,8 +44,9 @@ import de.topobyte.jsoup.bootstrap4.components.Container;
 import de.topobyte.jsoup.bootstrap4.components.ContextualType;
 import de.topobyte.jsoup.bootstrap4.components.NavTabs;
 import de.topobyte.jsoup.bootstrap4.components.ResponsiveImage;
+import de.topobyte.jsoup.components.Body;
 import de.topobyte.jsoup.components.Div;
-import de.topobyte.jsoup.nodes.Element;
+import de.topobyte.jsoup.components.P;
 
 public class OverviewGenerator extends BaseGenerator
 {
@@ -57,7 +58,7 @@ public class OverviewGenerator extends BaseGenerator
 	{
 		super.generate();
 
-		Element body = builder.getBody();
+		Body body = builder.getBody();
 
 		// Content
 
@@ -69,7 +70,7 @@ public class OverviewGenerator extends BaseGenerator
 
 		Div div = c.ac(div("foo"));
 
-		Element p = div.ac(p().inner("this is a paragraph in a div. "));
+		P p = div.ac(p().inner("this is a paragraph in a div. "));
 
 		System.out.println(p);
 		p.ap(b().inner("bold"));
@@ -109,7 +110,7 @@ public class OverviewGenerator extends BaseGenerator
 
 	private static void labels(Div div)
 	{
-		Element p = div.ac(p().inner("Another paragraph with some labels:"));
+		P p = div.ac(p().inner("Another paragraph with some labels:"));
 		p.ap(br());
 
 		List<Badge.Type> types = Arrays.asList(Badge.Type.values());

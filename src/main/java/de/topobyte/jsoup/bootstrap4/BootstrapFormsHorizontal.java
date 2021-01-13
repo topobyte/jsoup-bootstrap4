@@ -27,7 +27,7 @@ public class BootstrapFormsHorizontal extends BootstrapForms
 {
 
 	@Override
-	public Group addGroup(Element form)
+	public Group addGroup(Element<?> form)
 	{
 		Div group = form.ac(HTML.div("form-group row"));
 		Div div = group.ac(HTML.div("offset-sm-2 col-sm-10"));
@@ -36,7 +36,7 @@ public class BootstrapFormsHorizontal extends BootstrapForms
 	}
 
 	@Override
-	public Group addGroup(Element form, String label)
+	public Group addGroup(Element<?> form, String label)
 	{
 		Div group = form.ac(HTML.div("form-group row"));
 
@@ -53,7 +53,7 @@ public class BootstrapFormsHorizontal extends BootstrapForms
 	 * Add an arbitrary element without a label to the form such that it takes
 	 * up the full width of the form.
 	 */
-	public void addFullWidth(Element form, Element element)
+	public void addFullWidth(Element<?> form, Element<?> element)
 	{
 		Div group = form.ac(HTML.div("form-group row"));
 		Div div = group.ac(HTML.div("col-sm-12"));

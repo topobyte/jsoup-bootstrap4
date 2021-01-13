@@ -32,7 +32,7 @@ public class ListGroup extends UnorderedList
 		addClass("list-group");
 	}
 
-	private void addClass(Element element)
+	private void addClass(Element<?> element)
 	{
 		element.addClass("list-group-item");
 	}

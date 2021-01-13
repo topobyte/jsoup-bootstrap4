@@ -27,13 +27,16 @@ import org.jsoup.nodes.Node;
 
 import de.topobyte.jsoup.ElementBuilder;
 import de.topobyte.jsoup.bootstrap4.Bootstrap;
+import de.topobyte.jsoup.components.A;
+import de.topobyte.jsoup.components.Div;
+import de.topobyte.jsoup.components.List;
 import de.topobyte.jsoup.nodes.Element;
 
-public class Menu extends Element
+public class Menu extends Element<Menu>
 {
 
 	private String idNavbar;
-	protected Element content = this;
+	protected Element<?> content = this;
 
 	public Menu(boolean fixed, boolean fullWidth, Expand expand, boolean light,
 			String color)
@@ -79,7 +82,7 @@ public class Menu extends Element
 
 	public void addToggleButton()
 	{
-		Element button = content.ac(ElementBuilder.create("button", "type",
+		Element<?> button = content.ac(ElementBuilder.create("button", "type",
 				"button", "class", "navbar-toggler", "data-toggle", "collapse",
 				"data-target", "#" + idNavbar, "aria-controls", idNavbar,
 				"aria-expanded", "false", "aria-label", "Toggle navigation"));
@@ -92,37 +95,37 @@ public class Menu extends Element
 		content.ac(brand.addClass("navbar-brand"));
 	}
 
-	public Element addCollapsible()
+	public Div addCollapsible()
 	{
 		return content.ac(div().addClass("collapse navbar-collapse").attr("id",
 				idNavbar));
 	}
 
-	public Element addSection(Element collapse)
+	public List addSection(Element<?> collapse)
 	{
 		return collapse.ac(ul().addClass("navbar-nav"));
 	}
 
-	public Element addSectionRight(Element collapse)
+	public List addSectionRight(Element<?> collapse)
 	{
 		return collapse.ac(ul().addClass("navbar-nav ml-auto"));
 	}
 
-	public void add(Element section, Node content, boolean active)
+	public void add(Element<?> section, Node content, boolean active)
 	{
-		Element li = section.ac(li().addClass("nav-item"));
+		Element<?> li = section.ac(li().addClass("nav-item"));
 		if (active) {
 			li.addClass("active");
 		}
 		li.appendChild(content);
 	}
 
-	public void addLink(Element section, String link, String text,
+	public void addLink(Element<?> section, String link, String text,
 			boolean active)
 	{
-		Element a = a(link).inner(text).addClass("nav-link");
+		A a = a(link).inner(text).addClass("nav-link");
 
-		Element li = section.ac(li().addClass("nav-item"));
+		Element<?> li = section.ac(li().addClass("nav-item"));
 		if (active) {
 			li.addClass("active");
 		}

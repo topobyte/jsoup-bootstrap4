@@ -34,10 +34,10 @@ import de.topobyte.jsoup.bootstrap4.forms.InlineCheckbox;
 import de.topobyte.jsoup.bootstrap4.forms.InputGroup;
 import de.topobyte.jsoup.bootstrap4.forms.RadioGroup;
 import de.topobyte.jsoup.bootstrap4.forms.SelectGroup;
+import de.topobyte.jsoup.components.Body;
 import de.topobyte.jsoup.components.Div;
 import de.topobyte.jsoup.components.Form;
 import de.topobyte.jsoup.components.Input.Type;
-import de.topobyte.jsoup.nodes.Element;
 
 public class FormsGenerator extends BaseGenerator
 {
@@ -49,7 +49,7 @@ public class FormsGenerator extends BaseGenerator
 	{
 		super.generate();
 
-		Element body = builder.getBody();
+		Body body = builder.getBody();
 
 		// Content
 
