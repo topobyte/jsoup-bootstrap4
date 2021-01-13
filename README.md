@@ -19,3 +19,7 @@ We provide access to the artifacts via our
 You can also browse the repository online:
 
 <https://mvn.topobyte.de/de/topobyte/jsoup-bootstrap4/>
+
+# TODO
+
+* Make labels work for inputs and selects (click on label activate the input)
