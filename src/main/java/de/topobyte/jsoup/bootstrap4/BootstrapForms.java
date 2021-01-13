@@ -155,11 +155,13 @@ public class BootstrapForms
 				div.addClass("form-check-inline");
 			}
 
+			String id = String.format("%s%d", name, i + 1);
+
 			Input input = div.ac(HTML.input());
 			input.addClass("form-check-input");
 			input.attr("type", "radio");
 			input.attr("name", name);
-			input.attr("id", String.format("%s%d", name, i + 1));
+			input.attr("id", id);
 			input.attr("value", values.get(i));
 			if (i == selectedIndex) {
 				input.setChecked(true);
@@ -172,6 +174,7 @@ public class BootstrapForms
 			Label radioLabel = div.ac(HTML.label());
 			radioLabel.addClass("form-check-label");
 			radioLabel.appendText(names.get(i));
+			radioLabel.attr("for", id);
 
 			inputs.add(input);
 			map.put(values.get(i), input);
@@ -180,19 +183,22 @@ public class BootstrapForms
 		return new RadioGroup(group, inputs, map);
 	}
 
-	public Checkbox addCheckbox(Element<?> form, String name, String label)
+	public Checkbox addCheckbox(Element<?> form, String name, String label,
+			String id)
 	{
 		Div checkbox = form.ac(HTML.div("form-check"));
 
 		Input input = checkbox.ac(HTML.input());
 		input.addClass("form-check-input");
 		input.setName(name);
+		input.setId(id);
 		input.setType(Type.CHECKBOX);
 
 		Label boxLabel = null;
 		if (label != null) {
 			boxLabel = checkbox.ac(HTML.label());
 			boxLabel.addClass("form-check-label");
+			boxLabel.attr("for", id);
 			boxLabel.appendText(label);
 		}
 
@@ -200,7 +206,7 @@ public class BootstrapForms
 	}
 
 	public InlineCheckbox addInlineCheckbox(Element<?> element, String name,
-			String label)
+			String label, String id)
 	{
 		Div div = element.ac(HTML.div("form-check"));
 		div.addClass("form-check-inline");
@@ -208,9 +214,11 @@ public class BootstrapForms
 		Input input = div.ac(HTML.input());
 		input.addClass("form-check-input");
 		input.setName(name);
+		input.setId(id);
 		input.setType(Type.CHECKBOX);
 		Label boxLabel = div.ac(HTML.label());
 		boxLabel.addClass("form-check-label");
+		boxLabel.attr("for", id);
 		if (label != null) {
 			boxLabel.appendText(label);
 		}

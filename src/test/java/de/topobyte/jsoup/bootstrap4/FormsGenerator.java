@@ -75,7 +75,7 @@ public class FormsGenerator extends BaseGenerator
 		form.attr("id", "form1");
 
 		BootstrapForms forms = new BootstrapForms();
-		formContent(form, forms);
+		formContent(form, forms, "nrml-");
 	}
 
 	private void horizontalForm(Container content)
@@ -85,10 +85,10 @@ public class FormsGenerator extends BaseGenerator
 		form.addClass("form-horizontal");
 
 		BootstrapFormsHorizontal forms = new BootstrapFormsHorizontal();
-		formContent(form, forms);
+		formContent(form, forms, "hrz-");
 	}
 
-	private void formContent(Form form, BootstrapForms forms)
+	private void formContent(Form form, BootstrapForms forms, String prefix)
 	{
 		InputGroup inputName = forms.addInput(form, "name", "Name");
 		inputName.getInput().setPlaceholder("Your name");
@@ -102,35 +102,37 @@ public class FormsGenerator extends BaseGenerator
 
 		FormUtil.addPleaseSelectOption(selectGroup.getSelect());
 
-		RadioGroup radios = forms.addRadio(form, "drink", "Preferred Drink",
-				Arrays.asList("Coke", "Water", "Beer"),
+		RadioGroup radios = forms.addRadio(form, prefix + "drink_a",
+				"Preferred Drink", Arrays.asList("Coke", "Water", "Beer"),
 				Arrays.asList("coke", "water", "beer"), true);
 
 		Group group = radios.getGroup();
 		Checkbox checkbox = forms.addCheckbox(group.getContent(), "sugar",
-				"And everyhting with sugar");
+				"And everyhting with sugar", prefix + "box1");
 		checkbox.getInput().setChecked(true);
 
 		group = forms.addGroup(form);
 		forms.addCheckbox(group.getContent(), "stay_signed_in",
-				"A checkbox without a label to the left");
+				"A checkbox without a label to the left", prefix + "box2");
 
-		radios = forms.addRadio(form, "drink", "Preferred Drink",
+		radios = forms.addRadio(form, prefix + "drink_b", "Preferred Drink",
 				Arrays.asList("Coke", "Water", "Beer"),
 				Arrays.asList("coke", "water", "beer"), false);
 		radios.getInputs().get(1).setChecked(true);
 
 		group = forms.addGroup(form, "Options");
 		forms.addCheckbox(group.getContent(), "stay_signed_in",
-				"Keep me signed in");
-		forms.addCheckbox(group.getContent(), "other", "Something else");
+				"Keep me signed in", prefix + "box3");
+		forms.addCheckbox(group.getContent(), "other", "Something else",
+				prefix + "box4");
 
 		group = forms.addGroup(form, "Multiple");
 		Div div = group.getContent().ac(HTML.div());
 		InlineCheckbox inlineCheckbox = forms.addInlineCheckbox(div,
-				"stay_signed_in", "Keep me signed in");
+				"stay_signed_in", "Keep me signed in", prefix + "box5");
 		inlineCheckbox.getInput().setChecked(true);
-		forms.addInlineCheckbox(div, "other", "Something else");
+		forms.addInlineCheckbox(div, "other", "Something else",
+				prefix + "box6");
 
 		forms.addSubmit(form, "Continue");
 	}
