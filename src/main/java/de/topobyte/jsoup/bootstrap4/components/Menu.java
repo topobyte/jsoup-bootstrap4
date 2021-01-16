@@ -29,7 +29,7 @@ import de.topobyte.jsoup.ElementBuilder;
 import de.topobyte.jsoup.bootstrap4.Bootstrap;
 import de.topobyte.jsoup.components.A;
 import de.topobyte.jsoup.components.Div;
-import de.topobyte.jsoup.components.List;
+import de.topobyte.jsoup.components.UnorderedList;
 import de.topobyte.jsoup.nodes.Element;
 
 public class Menu extends Element<Menu>
@@ -101,14 +101,18 @@ public class Menu extends Element<Menu>
 				idNavbar));
 	}
 
-	public List addSection(Element<?> collapse)
+	public UnorderedList addSection(Element<?> collapse)
 	{
-		return collapse.ac(ul().addClass("navbar-nav"));
+		UnorderedList list = ul();
+		list.addClass("navbar-nav");
+		return list;
 	}
 
-	public List addSectionRight(Element<?> collapse)
+	public UnorderedList addSectionRight(Element<?> collapse)
 	{
-		return collapse.ac(ul().addClass("navbar-nav ml-auto"));
+		UnorderedList list = ul();
+		list.addClass("navbar-nav ml-auto");
+		return list;
 	}
 
 	public void add(Element<?> section, Node content, boolean active)
