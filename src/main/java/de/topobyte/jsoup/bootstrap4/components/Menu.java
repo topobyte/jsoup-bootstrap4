@@ -103,14 +103,14 @@ public class Menu extends Element<Menu>
 
 	public UnorderedList addSection(Element<?> collapse)
 	{
-		UnorderedList list = ul();
+		UnorderedList list = collapse.ac(ul());
 		list.addClass("navbar-nav");
 		return list;
 	}
 
 	public UnorderedList addSectionRight(Element<?> collapse)
 	{
-		UnorderedList list = ul();
+		UnorderedList list = collapse.ac(ul());
 		list.addClass("navbar-nav ml-auto");
 		return list;
 	}
