@@ -17,9 +17,6 @@
 
 package de.topobyte.jsoup.bootstrap4.components;
 
-import java.util.EnumMap;
-import java.util.Map;
-
 import org.jsoup.nodes.Node;
 
 import de.topobyte.jsoup.components.Div;
@@ -27,20 +24,12 @@ import de.topobyte.jsoup.components.Div;
 public class Alert extends Div
 {
 
-	private static Map<ContextualType, String> map = new EnumMap<>(
-			ContextualType.class);
-	static {
-		for (ContextualType type : ContextualType.values()) {
-			map.put(type, type.name().toLowerCase());
-		}
-	}
-
 	public Alert(ContextualType type)
 	{
 		if (type == null) {
 			throw new IllegalArgumentException("null is not allowed");
 		}
-		String typename = map.get(type);
+		String typename = ContextualType.getName(type);
 		attr("class", "alert alert-" + typename);
 		attr("role", "alert");
 	}
