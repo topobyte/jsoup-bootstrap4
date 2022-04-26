@@ -113,15 +113,15 @@ public class OverviewGenerator extends BaseGenerator
 		P p = div.ac(p().inner("Another paragraph with some labels:"));
 		p.ap(br());
 
-		List<Badge.Type> types = Arrays.asList(Badge.Type.values());
-		Iterator<Badge.Type> iterator = types.iterator();
+		List<ContextualType> types = Arrays.asList(ContextualType.values());
+		Iterator<ContextualType> iterator = types.iterator();
 		while (iterator.hasNext()) {
-			Badge.Type type = iterator.next();
+			ContextualType type = iterator.next();
 			Badge label = badge(type);
 			p.ap(label.inner(
 					"I'm a label of type " + type.toString().toLowerCase()));
 			if (iterator.hasNext()) {
-				p.appendText(" ");
+				p.at(" ");
 			}
 		}
 	}

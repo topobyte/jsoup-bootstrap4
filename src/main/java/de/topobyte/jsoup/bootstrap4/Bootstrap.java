@@ -56,7 +56,7 @@ public class Bootstrap
 		return new Div("row");
 	}
 
-	public static Badge badge(Badge.Type type)
+	public static Badge badge(ContextualType type)
 	{
 		return new Badge(type);
 	}

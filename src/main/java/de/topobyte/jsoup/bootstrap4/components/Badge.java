@@ -17,9 +17,6 @@
 
 package de.topobyte.jsoup.bootstrap4.components;
 
-import java.util.EnumMap;
-import java.util.Map;
-
 import org.jsoup.nodes.Node;
 
 import de.topobyte.jsoup.components.Span;
@@ -27,40 +24,22 @@ import de.topobyte.jsoup.components.Span;
 public class Badge extends Span
 {
 
-	public static enum Type {
-		PRIMARY,
-		SECONDARY,
-		SUCCESS,
-		INFO,
-		WARNING,
-		DANGER,
-		LIGHT,
-		DARK,
-	}
-
-	private static Map<Type, String> map = new EnumMap<>(Type.class);
-	static {
-		for (Type type : Type.values()) {
-			map.put(type, type.name().toLowerCase());
-		}
-	}
-
-	public Badge(Type type)
+	public Badge(ContextualType type)
 	{
 		if (type == null) {
 			throw new IllegalArgumentException("null is not allowed");
 		}
-		String typename = map.get(type);
+		String typename = ContextualType.getName(type);
 		attr("class", "badge badge-" + typename);
 	}
 
-	public Badge(Type type, String text)
+	public Badge(ContextualType type, String text)
 	{
 		this(type);
 		appendText(text);
 	}
 
-	public Badge(Type type, Node child)
+	public Badge(ContextualType type, Node child)
 	{
 		this(type);
 		appendChild(child);

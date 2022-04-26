@@ -18,13 +18,13 @@
 package de.topobyte.jsoup.bootstrap4.util;
 
 import de.topobyte.jsoup.bootstrap4.Bootstrap;
-import de.topobyte.jsoup.bootstrap4.components.Badge;
+import de.topobyte.jsoup.bootstrap4.components.ContextualType;
 import de.topobyte.jsoup.components.ListItem;
 
 public class ListGroups
 {
 
-	public static void setBadge(ListItem item, Badge.Type type, String text)
+	public static void setBadge(ListItem item, ContextualType type, String text)
 	{
 		item.addClass("d-flex justify-content-between align-items-center");
 		item.ac(Bootstrap.badge(type).appendText(text));

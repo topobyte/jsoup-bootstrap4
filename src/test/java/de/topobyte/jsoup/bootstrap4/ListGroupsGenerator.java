@@ -27,7 +27,6 @@ import java.util.List;
 import org.jsoup.nodes.Document;
 
 import de.topobyte.jsoup.HTML;
-import de.topobyte.jsoup.bootstrap4.components.Badge;
 import de.topobyte.jsoup.bootstrap4.components.Container;
 import de.topobyte.jsoup.bootstrap4.components.ContextualType;
 import de.topobyte.jsoup.bootstrap4.components.ListGroup;
@@ -112,11 +111,11 @@ public class ListGroupsGenerator extends BaseGenerator
 		ListItem item;
 		int i = 0;
 		item = list.addTextItem(getText(i++));
-		ListGroups.setBadge(item, Badge.Type.SECONDARY, "14");
+		ListGroups.setBadge(item, ContextualType.SECONDARY, "14");
 		item = list.addTextItem(getText(i++));
-		ListGroups.setBadge(item, Badge.Type.SECONDARY, "2");
+		ListGroups.setBadge(item, ContextualType.SECONDARY, "2");
 		item = list.addTextItem(getText(i++));
-		ListGroups.setBadge(item, Badge.Type.SECONDARY, "1");
+		ListGroups.setBadge(item, ContextualType.SECONDARY, "1");
 	}
 
 	private void linked(Container content)
