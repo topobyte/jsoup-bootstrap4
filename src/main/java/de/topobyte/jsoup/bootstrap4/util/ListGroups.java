@@ -27,7 +27,7 @@ public class ListGroups
 	public static void setBadge(ListItem item, ContextualType type, String text)
 	{
 		item.addClass("d-flex justify-content-between align-items-center");
-		item.ac(Bootstrap.badge(type).appendText(text));
+		item.ac(Bootstrap.badge(type).at(text));
 	}
 
 }

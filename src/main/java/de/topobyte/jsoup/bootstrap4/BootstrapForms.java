@@ -89,7 +89,7 @@ public class BootstrapForms
 		button.attr("type", "submit");
 		button.addClass("btn");
 		button.addClass("btn-primary");
-		button.appendText(buttonText);
+		button.at(buttonText);
 
 		return new ButtonGroup(group, button);
 	}
@@ -173,7 +173,7 @@ public class BootstrapForms
 
 			Label radioLabel = div.ac(HTML.label());
 			radioLabel.addClass("form-check-label");
-			radioLabel.appendText(names.get(i));
+			radioLabel.at(names.get(i));
 			radioLabel.attr("for", id);
 
 			inputs.add(input);
@@ -199,7 +199,7 @@ public class BootstrapForms
 			boxLabel = checkbox.ac(HTML.label());
 			boxLabel.addClass("form-check-label");
 			boxLabel.attr("for", id);
-			boxLabel.appendText(label);
+			boxLabel.at(label);
 		}
 
 		return new Checkbox(checkbox, boxLabel, input);
@@ -220,7 +220,7 @@ public class BootstrapForms
 		boxLabel.addClass("form-check-label");
 		boxLabel.attr("for", id);
 		if (label != null) {
-			boxLabel.appendText(label);
+			boxLabel.at(label);
 		}
 
 		return new InlineCheckbox(boxLabel, input);

@@ -49,7 +49,7 @@ public class ListGroup extends UnorderedList
 	public ListGroupItem addTextItem(String text)
 	{
 		ListGroupItem item = addItem();
-		item.appendText(text);
+		item.at(text);
 		addClass(item);
 		return item;
 	}

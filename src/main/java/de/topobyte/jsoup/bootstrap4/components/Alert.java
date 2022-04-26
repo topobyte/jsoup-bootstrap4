@@ -37,7 +37,7 @@ public class Alert extends Div
 	public Alert(ContextualType type, String text)
 	{
 		this(type);
-		appendText(text);
+		at(text);
 	}
 
 	public Alert(ContextualType type, Node child)

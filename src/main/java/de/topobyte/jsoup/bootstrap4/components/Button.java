@@ -86,7 +86,7 @@ public class Button extends Element<Button>
 	public Button(ContextualType type, boolean outline, String text)
 	{
 		this(type, outline);
-		appendText(text);
+		at(text);
 	}
 
 	public Button(ContextualType type, boolean outline, Node child)
@@ -111,7 +111,7 @@ public class Button extends Element<Button>
 	public Button(Type type, boolean outline, String text)
 	{
 		this(type, outline);
-		appendText(text);
+		at(text);
 	}
 
 	public Button(Type type, boolean outline, Node child)

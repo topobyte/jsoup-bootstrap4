@@ -156,8 +156,8 @@ public class ListGroupsGenerator extends BaseGenerator
 		ListGroupDiv list = content.ac(Bootstrap.listGroupDiv());
 		int i = 0;
 		list.addTextItem(getText(i++));
-		list.addItem().appendText(getText(i++));
-		list.addItem(HTML.b().appendText(getText(i++)));
+		list.addItem().at(getText(i++));
+		list.addItem(HTML.b().at(getText(i++)));
 	}
 
 	private void basicContextual(Container content)

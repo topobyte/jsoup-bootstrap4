@@ -75,9 +75,9 @@ public class OverviewGenerator extends BaseGenerator
 
 		System.out.println(p);
 		p.ap(b().inner("bold"));
-		p.appendText(" and ");
+		p.at(" and ");
 		p.ap(i().inner("italic"));
-		p.appendText(" text is possible as well");
+		p.at(" text is possible as well");
 		System.out.println(p);
 
 		buttons1(div);
@@ -200,25 +200,25 @@ public class OverviewGenerator extends BaseGenerator
 		div.ac(p().inner("Panels:"));
 
 		Card panel = div.ac(new Card(false));
-		panel.getCardHead().appendText("A simple panel");
-		panel.getCardBody().appendText("Some content");
+		panel.getCardHead().at("A simple panel");
+		panel.getCardBody().at("Some content");
 		panel.addClass("mb-2");
 
 		panel = div.ac(new Card(true));
-		panel.getCardHead().appendText("A simple panel");
-		panel.getCardBody().appendText("Some content");
-		panel.getCardFooter().appendText("A footer");
+		panel.getCardHead().at("A simple panel");
+		panel.getCardBody().at("Some content");
+		panel.getCardFooter().at("A footer");
 		panel.addClass("mb-2");
 
 		CollapsibleCard cpanel = div.ac(new CollapsibleCard(false, true, true));
-		cpanel.getPanelHead().appendText("A collapsible panel");
-		cpanel.getPanelBody().appendText("Some content");
+		cpanel.getPanelHead().at("A collapsible panel");
+		cpanel.getPanelBody().at("Some content");
 		cpanel.addClass("mb-2");
 
 		cpanel = div.ac(new CollapsibleCard(true, true, false));
-		cpanel.getPanelHead().appendText("A collapsible panel");
-		cpanel.getPanelBody().appendText("Some content");
-		cpanel.getPanelFooter().appendText("A footer");
+		cpanel.getPanelHead().at("A collapsible panel");
+		cpanel.getPanelBody().at("Some content");
+		cpanel.getPanelFooter().at("A footer");
 		cpanel.addClass("mb-2");
 	}
 
@@ -231,8 +231,7 @@ public class OverviewGenerator extends BaseGenerator
 		while (iterator.hasNext()) {
 			ContextualType type = iterator.next();
 			Alert alert = div.ac(alert(type));
-			alert.appendText(
-					"I'm an alert of type " + type.toString().toLowerCase());
+			alert.at("I'm an alert of type " + type.toString().toLowerCase());
 		}
 	}
 

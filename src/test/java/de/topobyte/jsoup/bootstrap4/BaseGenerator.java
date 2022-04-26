@@ -58,7 +58,7 @@ public class BaseGenerator
 		Menu menu = menuBuilder.create();
 		body.ap(menu);
 
-		menu.addBrand(HTML.span().appendText("Awesome"));
+		menu.addBrand(HTML.span().at("Awesome"));
 
 		Element<?> collapse = menu.addCollapsible();
 		Element<?> main = menu.addSection(collapse);

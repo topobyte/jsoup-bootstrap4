@@ -36,7 +36,7 @@ public class Badge extends Span
 	public Badge(ContextualType type, String text)
 	{
 		this(type);
-		appendText(text);
+		at(text);
 	}
 
 	public Badge(ContextualType type, Node child)
