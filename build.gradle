@@ -44,7 +44,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile 'de.topobyte:jsoup-elements:0.2.0'
+    compile 'de.topobyte:jsoup-elements:0.2.1'
     compile 'de.topobyte:jsoup-utils:0.2.0'
 
     testCompile 'de.topobyte:melon-resources:0.0.1'
