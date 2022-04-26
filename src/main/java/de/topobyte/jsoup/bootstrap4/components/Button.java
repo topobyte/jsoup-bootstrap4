@@ -17,6 +17,9 @@
 
 package de.topobyte.jsoup.bootstrap4.components;
 
+import java.util.EnumMap;
+import java.util.Map;
+
 import org.jsoup.nodes.Node;
 
 import de.topobyte.jsoup.nodes.Element;
@@ -24,34 +27,108 @@ import de.topobyte.jsoup.nodes.Element;
 public class Button extends Element<Button>
 {
 
-	public Button()
+	public enum Type {
+
+		PRIMARY,
+		SECONDARY,
+		SUCCESS,
+		INFO,
+		WARNING,
+		DANGER,
+		LIGHT,
+		DARK,
+		LINK;
+
+		private static Map<Type, String> map = new EnumMap<>(Type.class);
+		static {
+			for (Type type : values()) {
+				map.put(type, type.name().toLowerCase());
+			}
+		}
+
+		public static String getName(Type type)
+		{
+			return map.get(type);
+		}
+
+	}
+
+	public Button(ContextualType type, boolean outline)
 	{
 		super("a");
-		attr("class", "btn btn-primary");
+		if (type == null) {
+			throw new IllegalArgumentException("null is not allowed");
+		}
+		String typename = ContextualType.getName(type);
+		if (outline) {
+			attr("class", "btn btn-outline-" + typename);
+		} else {
+			attr("class", "btn btn-" + typename);
+		}
 		attr("role", "button");
 	}
 
-	public Button(String text)
+	public Button(Type type, boolean outline)
 	{
-		this();
+		super("a");
+		if (type == null) {
+			throw new IllegalArgumentException("null is not allowed");
+		}
+		String typename = Type.getName(type);
+		if (outline) {
+			attr("class", "btn btn-outline-" + typename);
+		} else {
+			attr("class", "btn btn-" + typename);
+		}
+		attr("role", "button");
+	}
+
+	public Button(ContextualType type, boolean outline, String text)
+	{
+		this(type, outline);
 		appendText(text);
 	}
 
-	public Button(Node child)
+	public Button(ContextualType type, boolean outline, Node child)
 	{
-		this();
+		this(type, outline);
 		appendChild(child);
 	}
 
-	public Button(String text, String href)
+	public Button(ContextualType type, boolean outline, String text,
+			String href)
 	{
-		this(text);
+		this(type, outline, text);
 		attr("href", href);
 	}
 
-	public Button(Node child, String href)
+	public Button(ContextualType type, boolean outline, Node child, String href)
 	{
-		this(child);
+		this(type, outline, child);
+		attr("href", href);
+	}
+
+	public Button(Type type, boolean outline, String text)
+	{
+		this(type, outline);
+		appendText(text);
+	}
+
+	public Button(Type type, boolean outline, Node child)
+	{
+		this(type, outline);
+		appendChild(child);
+	}
+
+	public Button(Type type, boolean outline, String text, String href)
+	{
+		this(type, outline, text);
+		attr("href", href);
+	}
+
+	public Button(Type type, boolean outline, Node child, String href)
+	{
+		this(type, outline, child);
 		attr("href", href);
 	}
 

@@ -38,6 +38,7 @@ import org.jsoup.nodes.Document;
 import de.topobyte.jsoup.bootstrap4.components.Alert;
 import de.topobyte.jsoup.bootstrap4.components.Badge;
 import de.topobyte.jsoup.bootstrap4.components.Breadcrumb;
+import de.topobyte.jsoup.bootstrap4.components.Button;
 import de.topobyte.jsoup.bootstrap4.components.Card;
 import de.topobyte.jsoup.bootstrap4.components.CollapsibleCard;
 import de.topobyte.jsoup.bootstrap4.components.Container;
@@ -79,7 +80,8 @@ public class OverviewGenerator extends BaseGenerator
 		p.appendText(" text is possible as well");
 		System.out.println(p);
 
-		div.ac(button().inner("I'm a button")).attr("href", "#");
+		buttons1(div);
+		buttons2(div);
 
 		labels(div);
 
@@ -106,6 +108,62 @@ public class OverviewGenerator extends BaseGenerator
 		breadcrumb.addTextItem("bar");
 		breadcrumb.addTextItem("and");
 		breadcrumb.addTextItem("so on");
+	}
+
+	private static void buttons1(Div div)
+	{
+		P p = div.ac(p().inner("A paragraph with some buttons:"));
+		p.ap(br());
+
+		List<ContextualType> types = Arrays.asList(ContextualType.values());
+		Iterator<ContextualType> iterator = types.iterator();
+		while (iterator.hasNext()) {
+			ContextualType type = iterator.next();
+
+			p.ac(button(type).inner("I'm a button")).attr("href", "#");
+			if (iterator.hasNext()) {
+				p.at(" ");
+			}
+		}
+
+		p = div.ac(p());
+		iterator = types.iterator();
+		while (iterator.hasNext()) {
+			ContextualType type = iterator.next();
+
+			p.ac(button(type, true).inner("I'm a button")).attr("href", "#");
+			if (iterator.hasNext()) {
+				p.at(" ");
+			}
+		}
+	}
+
+	private static void buttons2(Div div)
+	{
+		P p = div.ac(p().inner("More buttons:"));
+		p = div.ac(p());
+
+		List<Button.Type> types = Arrays.asList(Button.Type.values());
+		Iterator<Button.Type> iterator = types.iterator();
+		while (iterator.hasNext()) {
+			Button.Type type = iterator.next();
+
+			p.ac(button(type).inner("I'm a button")).attr("href", "#");
+			if (iterator.hasNext()) {
+				p.at(" ");
+			}
+		}
+
+		p = div.ac(p());
+		iterator = types.iterator();
+		while (iterator.hasNext()) {
+			Button.Type type = iterator.next();
+
+			p.ac(button(type, true).inner("I'm a button")).attr("href", "#");
+			if (iterator.hasNext()) {
+				p.at(" ");
+			}
+		}
 	}
 
 	private static void labels(Div div)

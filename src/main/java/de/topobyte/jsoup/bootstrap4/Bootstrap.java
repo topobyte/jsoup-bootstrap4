@@ -41,9 +41,24 @@ public class Bootstrap
 		return new ContainerFluid();
 	}
 
-	public static Button button()
+	public static Button button(ContextualType type)
 	{
-		return new Button();
+		return new Button(type, false);
+	}
+
+	public static Button button(ContextualType type, boolean outline)
+	{
+		return new Button(type, outline);
+	}
+
+	public static Button button(Button.Type type)
+	{
+		return new Button(type, false);
+	}
+
+	public static Button button(Button.Type type, boolean outline)
+	{
+		return new Button(type, outline);
 	}
 
 	public static Breadcrumb breadcrumb()
