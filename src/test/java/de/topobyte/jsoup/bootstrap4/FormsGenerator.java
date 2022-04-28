@@ -27,7 +27,9 @@ import org.jsoup.nodes.Document;
 
 import de.topobyte.jsoup.FormUtil;
 import de.topobyte.jsoup.HTML;
+import de.topobyte.jsoup.bootstrap4.components.Button;
 import de.topobyte.jsoup.bootstrap4.components.Container;
+import de.topobyte.jsoup.bootstrap4.components.ContextualType;
 import de.topobyte.jsoup.bootstrap4.forms.Checkbox;
 import de.topobyte.jsoup.bootstrap4.forms.Group;
 import de.topobyte.jsoup.bootstrap4.forms.InlineCheckbox;
@@ -62,6 +64,10 @@ public class FormsGenerator extends BaseGenerator
 		c.ap(h1().inner("Horizontal forms"));
 
 		horizontalForm(c);
+
+		c.ap(h1().inner("Submit buttons"));
+
+		submitButtons(c);
 
 		Document doc = builder.getDocument();
 		System.out.println(doc);
@@ -135,6 +141,27 @@ public class FormsGenerator extends BaseGenerator
 				prefix + "box6");
 
 		forms.addSubmit(form, "Continue");
+	}
+
+	private void submitButtons(Container content)
+	{
+		Form form = content.ac(HTML.form());
+		form.attr("id", "form2");
+		form.addClass("form-horizontal");
+
+		BootstrapFormsHorizontal forms = new BootstrapFormsHorizontal();
+
+		InputGroup inputName = forms.addInput(form, "name", "Name");
+		inputName.getInput().setPlaceholder("Your name");
+
+		InputGroup inputPassword = forms.addInput(form, "password", "Password");
+		inputPassword.getInput().setType(Type.PASSWORD);
+
+		forms.addSubmit(form, "Continue");
+		forms.addSubmit(form, ContextualType.DANGER, false, "Continue");
+		forms.addSubmit(form, Button.Type.LINK, false, "Continue");
+		forms.addSubmit(form, ContextualType.WARNING, true, "Continue");
+		forms.addSubmit(form, Button.Type.SUCCESS, true, "Continue");
 	}
 
 }

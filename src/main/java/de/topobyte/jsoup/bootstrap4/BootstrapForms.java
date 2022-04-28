@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.topobyte.jsoup.HTML;
+import de.topobyte.jsoup.bootstrap4.components.ContextualType;
 import de.topobyte.jsoup.bootstrap4.forms.ButtonGroup;
 import de.topobyte.jsoup.bootstrap4.forms.Checkbox;
 import de.topobyte.jsoup.bootstrap4.forms.Group;
@@ -83,15 +84,65 @@ public class BootstrapForms
 
 	public ButtonGroup addSubmit(Element<?> form, String buttonText)
 	{
+		return addSubmit(form, ContextualType.PRIMARY, false, buttonText);
+	}
+
+	public ButtonGroup addSubmit(Element<?> form, ContextualType type,
+			boolean outline, String buttonText)
+	{
 		Group group = addGroup(form);
 
-		Button button = group.getContent().ac(HTML.button());
+		Button button = group.getContent().ac(button(type, outline));
 		button.attr("type", "submit");
-		button.addClass("btn");
-		button.addClass("btn-primary");
 		button.at(buttonText);
 
 		return new ButtonGroup(group, button);
+	}
+
+	public ButtonGroup addSubmit(Element<?> form,
+			de.topobyte.jsoup.bootstrap4.components.Button.Type type,
+			boolean outline, String buttonText)
+	{
+		Group group = addGroup(form);
+
+		Button button = group.getContent().ac(button(type, outline));
+		button.attr("type", "submit");
+		button.at(buttonText);
+
+		return new ButtonGroup(group, button);
+	}
+
+	private Button button(ContextualType type, boolean outline)
+	{
+		Button button = HTML.button();
+		if (type == null) {
+			throw new IllegalArgumentException("null is not allowed");
+		}
+		String typename = ContextualType.getName(type);
+		if (outline) {
+			button.attr("class", "btn btn-outline-" + typename);
+		} else {
+			button.attr("class", "btn btn-" + typename);
+		}
+		return button;
+	}
+
+	private Button button(
+			de.topobyte.jsoup.bootstrap4.components.Button.Type type,
+			boolean outline)
+	{
+		Button button = HTML.button();
+		if (type == null) {
+			throw new IllegalArgumentException("null is not allowed");
+		}
+		String typename = de.topobyte.jsoup.bootstrap4.components.Button.Type
+				.getName(type);
+		if (outline) {
+			button.attr("class", "btn btn-outline-" + typename);
+		} else {
+			button.attr("class", "btn btn-" + typename);
+		}
+		return button;
 	}
 
 	public SelectGroup addSelect(Element<?> form, String name, String label,
