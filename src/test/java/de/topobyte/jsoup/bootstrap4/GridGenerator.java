@@ -17,6 +17,9 @@
 
 package de.topobyte.jsoup.bootstrap4;
 
+import static de.topobyte.jsoup.bootstrap4.components.Column.MD_6;
+import static de.topobyte.jsoup.bootstrap4.components.Column.XS_12;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -57,14 +60,14 @@ public class GridGenerator extends BaseGenerator
 	private void columns(Container c)
 	{
 		Div row = c.ac(Bootstrap.row());
-		column(row, "col-12 col-md-6");
-		column(row, "col-12 col-md-6");
-		column(row, "col-12");
+		column(row, Bootstrap.column(XS_12, MD_6));
+		column(row, Bootstrap.column(XS_12, MD_6));
+		column(row, Bootstrap.column(XS_12));
 	}
 
-	private void column(Div row, String columnClass)
+	private void column(Div row, Div col)
 	{
-		Div col = row.ac(HTML.div(columnClass));
+		row.ac(col);
 		col.ac(HTML.p()).at("This is a " + col.attr("class") + " column")
 				.addClass("mt-4");
 

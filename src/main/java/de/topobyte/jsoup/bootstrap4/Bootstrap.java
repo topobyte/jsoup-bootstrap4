@@ -17,10 +17,12 @@
 
 package de.topobyte.jsoup.bootstrap4;
 
+import de.topobyte.jsoup.HTML;
 import de.topobyte.jsoup.bootstrap4.components.Alert;
 import de.topobyte.jsoup.bootstrap4.components.Badge;
 import de.topobyte.jsoup.bootstrap4.components.Breadcrumb;
 import de.topobyte.jsoup.bootstrap4.components.Button;
+import de.topobyte.jsoup.bootstrap4.components.Column;
 import de.topobyte.jsoup.bootstrap4.components.Container;
 import de.topobyte.jsoup.bootstrap4.components.ContainerFluid;
 import de.topobyte.jsoup.bootstrap4.components.ContextualType;
@@ -69,6 +71,18 @@ public class Bootstrap
 	public static Div row()
 	{
 		return new Div("row");
+	}
+
+	public static Div column(Column... columns)
+	{
+		StringBuilder strb = new StringBuilder();
+		for (int i = 0; i < columns.length; i++) {
+			strb.append(columns[i].getClassName());
+			if (i < columns.length - 1) {
+				strb.append(" ");
+			}
+		}
+		return HTML.div(strb.toString());
 	}
 
 	public static Badge badge(ContextualType type)
