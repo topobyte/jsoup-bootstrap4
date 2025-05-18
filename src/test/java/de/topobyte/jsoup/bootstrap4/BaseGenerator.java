@@ -28,6 +28,7 @@ import de.topobyte.jsoup.bootstrap4.components.Menu;
 import de.topobyte.jsoup.bootstrap4.components.MenuBuilder;
 import de.topobyte.jsoup.components.Body;
 import de.topobyte.jsoup.components.Head;
+import de.topobyte.jsoup.components.Meta;
 import de.topobyte.jsoup.nodes.Element;
 
 public class BaseGenerator
@@ -38,6 +39,15 @@ public class BaseGenerator
 	public void generate() throws IOException
 	{
 		Head head = builder.getHead();
+
+		Meta meta = head.ac(HTML.meta());
+		meta.attr("http-equiv", "content-type");
+		meta.attr("content", "text/html; charset=utf-8");
+
+		meta = head.ac(HTML.meta());
+		meta.attr("name", "viewport");
+		meta.attr("content",
+				"width=device-width, initial-scale=1, shrink-to-fit=no");
 
 		String header = IOUtils
 				.toString(Thread.currentThread().getContextClassLoader()
