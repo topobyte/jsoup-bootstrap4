@@ -46,6 +46,9 @@ public class TestBootstrap4
 
 		ListGroupsGenerator listGroupsGenerator = new ListGroupsGenerator();
 		listGroupsGenerator.generate();
+
+		GridGenerator gridGenerator = new GridGenerator();
+		gridGenerator.generate();
 	}
 
 }

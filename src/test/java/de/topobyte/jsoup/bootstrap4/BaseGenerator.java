@@ -78,6 +78,7 @@ public class BaseGenerator
 		menu.addLink(main, "index.html", "Overview", false);
 		menu.addLink(main, "forms.html", "Forms", false);
 		menu.addLink(main, "list-groups.html", "List-Groups", false);
+		menu.addLink(main, "grid.html", "Grid", false);
 
 		menu.addLink(right, "#", "About", false);
 	}
