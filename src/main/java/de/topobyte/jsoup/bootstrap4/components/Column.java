@@ -69,7 +69,20 @@ public enum Column {
 	LG_9("col-lg-9"),
 	LG_10("col-lg-10"),
 	LG_11("col-lg-11"),
-	LG_12("col-lg-12");
+	LG_12("col-lg-12"),
+
+	XL_1("col-xl-1"),
+	XL_2("col-xl-2"),
+	XL_3("col-xl-3"),
+	XL_4("col-xl-4"),
+	XL_5("col-xl-5"),
+	XL_6("col-xl-6"),
+	XL_7("col-xl-7"),
+	XL_8("col-xl-8"),
+	XL_9("col-xl-9"),
+	XL_10("col-xl-10"),
+	XL_11("col-xl-11"),
+	XL_12("col-xl-12");
 
 	private String className;
 
