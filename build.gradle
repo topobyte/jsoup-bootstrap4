@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url = 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
         classpath 'com.craigburke.gradle:client-dependencies:1.4.0'
@@ -8,21 +8,20 @@ buildscript {
 }
 
 plugins {
-    id 'io.franzbecker.gradle-lombok' version '1.14'
+    id("io.freefair.lombok") version "8.0.1" apply false
 }
 
 wrapper {
-    gradleVersion = '5.2.1'
+    gradleVersion = '8.12'
 }
 
-apply plugin: 'java'
+apply plugin: 'java-library'
 apply plugin: 'eclipse'
-apply plugin: 'maven'
-apply plugin: 'io.franzbecker.gradle-lombok'
+apply plugin: 'maven-publish'
+apply plugin: 'io.freefair.lombok'
 
 lombok {
-    version = '1.18.2'
-    sha256 = ""
+    version = '1.18.26'
 }
 
 if (project.hasProperty("topobyte")) {
@@ -35,27 +34,32 @@ version = pVersion
 
 repositories {
     maven {
-        url 'http://mvn.topobyte.de'
+        url = 'https://mvn.topobyte.de'
     }
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+java {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
 
 dependencies {
-    compile 'de.topobyte:jsoup-elements:0.2.1'
-    compile 'de.topobyte:jsoup-utils:0.2.0'
+    api 'de.topobyte:jsoup-elements:0.2.1'
+    api 'de.topobyte:jsoup-utils:0.2.0'
 
-    testCompile 'de.topobyte:melon-resources:0.0.1'
-    testCompile 'commons-io:commons-io:2.4'
+    testImplementation 'de.topobyte:melon-resources:0.0.1'
+    testImplementation 'commons-io:commons-io:2.4'
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
+java {
+    withSourcesJar()
 }
 
-artifacts {
-    archives sourcesJar
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
 }
