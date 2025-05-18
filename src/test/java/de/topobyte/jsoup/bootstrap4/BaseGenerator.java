@@ -69,6 +69,7 @@ public class BaseGenerator
 		body.ap(menu);
 
 		menu.addBrand(HTML.span().at("Awesome"));
+		menu.addToggleButton();
 
 		Element<?> collapse = menu.addCollapsible();
 		Element<?> main = menu.addSection(collapse);
